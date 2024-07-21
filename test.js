@@ -7,13 +7,13 @@ const config = {
 }
 const conn = new Connector(config)
 conn
-	.createModelFiles()
+	.createDbSets()
 	.then(() => {
 		conn.data['users'].get('*', (result) => {
 			console.log(result)
 		})
 
-		conn.data['users'].insert({ id: 5, login: 'TEST-TEST-TEST' }, 'id, login')
+		conn.data['users'].insert({ id: 8, login: 'Remuru' }, 'id, login')
 
 		conn.data['users'].get('*', (res) => {
 			console.log(res)
