@@ -9,14 +9,11 @@ const conn = new Connector(config)
 conn
 	.createDbSets()
 	.then(() => {
-		conn.data['users'].get('*', (result) => {
+		conn.data['users'].myQuery(
+			'insert into users (id, login) values (10, "qwerty")'
+		)
+		conn.data['users'].myQuery('select login from users;', (result) => {
 			console.log(result)
-		})
-
-		conn.data['users'].insert({ id: 8, login: 'Remuru' }, 'id, login')
-
-		conn.data['users'].get('*', (res) => {
-			console.log(res)
 		})
 	})
 	.catch((err) => {

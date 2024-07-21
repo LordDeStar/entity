@@ -23,6 +23,13 @@ class dbSet {
 				}
 			)
 		}
+		this.myQuery = (query, handler) => {
+			this.conn.query(query, (err, res) => {
+				if (err) throw err
+				if (!query.toLowerCase().startsWith('insert')) handler(res)
+				else console.log('Insert state: OK')
+			})
+		}
 	}
 }
 
